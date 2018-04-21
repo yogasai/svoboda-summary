@@ -39,7 +39,7 @@ print 'total number of unique words in d47 summary: ', sumUnique
 
 #words in common
 common = list(set(text) & set(summary))
-print('PRINTS COMMON', common)
+# print('PRINTS COMMON', common)
 commonLength = len(common)
 print '# words in common for diary and summary: ', commonLength
 
@@ -47,7 +47,7 @@ print '# words in common for diary and summary: ', commonLength
 #diary
 lemmatizer = WordNetLemmatizer()
 diaryLem = [lemmatizer.lemmatize(t) for t in dTokens]
-print('PRINTS DIARY LEM',diaryLem)
+#print('PRINTS DIARY LEM',diaryLem)
 #1. total number of words - diary
 diaryLemLength = len(diaryLem)
 print 'total # of lemmatized words in d47: ', diaryLemLength
