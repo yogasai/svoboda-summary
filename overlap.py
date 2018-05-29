@@ -2,6 +2,13 @@
 # This program extracts the unique named entities from the 
 # first 20 sentences of the sample diary.
 
+import timex 
+import dateparser
+from dateparser.search import search_dates
+from timex import tag
+from timex import ground
+import datetime 
+from datetime import date
 import nltk
 from nltk.tokenize import sent_tokenize
 from nltk.tag import pos_tag
@@ -32,9 +39,12 @@ def extract_entity_names(t):
         else:
             for child in t:
                 entity_names.extend(extract_entity_names(child))
+    
+    #elif 
+    
 
     return entity_names
-
+	
 entity_names = []
 for tree in chunked:
     # print results per sentence
@@ -44,8 +54,30 @@ for tree in chunked:
 
 
 # print unique entity names
-unique = set(entity_names)
-print(unique)
+base_date = datetime.date.today()
+#now = datetime.date.today() 
+#basedate = datetime.Date(now.year, now.month, now.day) 
+
+tagged_text = []
+for sentence in sentences: 
+	#newsent = dateparser.parse(sentence)
+	#newsent = search_dates(sentence)
+	newsent = tag(sentence)
+	#dt.append(newsent)
+	tagged_text.append(newsent)
+#dates = tag(sentences);
+
+
+dt = []
+#for string in tagged_text:
+	#dt = ground(tagged_text, base_date)
+dt = ground(tagged_text, base_date)
+
+print(dt)
+
+#unique = set(entity_names)
+#unique.append(dates)
+#print(unique)
 
 # output:
 #set(['Deir', 'Basra', 'Mejidieh Class', 'Thani', 'Paris', 'Mejidieh', 'Suez Canal', 
